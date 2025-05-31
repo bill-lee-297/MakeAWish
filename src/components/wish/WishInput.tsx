@@ -1,8 +1,7 @@
-import React, { useState, useRef, useLayoutEffect, useEffect } from 'react';
+import { useState, useRef, useLayoutEffect, useEffect } from 'react';
 import styles from './WishInput.module.css';
 import gsap from 'gsap';
 import ShootingStar from '../background/stars/ShootingStar';
-import { IoIosSend } from "react-icons/io";
 import { IoRefreshSharp } from 'react-icons/io5';
 import { saveWish } from '../../firebase/wishes';
 import WishList from './WishList';
@@ -12,7 +11,6 @@ const WishInput = () => {
   const messageRef = useRef<HTMLDivElement>(null);
   const wishInputContainerRef = useRef<HTMLDivElement>(null);
   const wishInputRef = useRef<HTMLInputElement>(null);
-  const wishBtnRef = useRef<HTMLButtonElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
   const showWishListBtnRef = useRef<HTMLButtonElement>(null);
 
@@ -151,9 +149,6 @@ const WishInput = () => {
             <div className={styles.wishInputTitle}>
               이야.
             </div>
-            {/* <button ref={wishBtnRef} className={styles.wishBtn} onClick={handleButtonClick}>
-              <IoIosSend size={24} />
-            </button> */}
           </div>
           <div className={styles.checkboxContainer}>
             <input
