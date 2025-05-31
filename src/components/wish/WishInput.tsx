@@ -41,22 +41,6 @@ const WishInput = () => {
         ease: 'power1.inOut'
       });
     }
-  //   const inputTl = gsap.timeline();
-  //   if (wishInputRef.current) {
-  //     inputTl.fromTo(
-  //       wishInputRef.current,
-  //       { opacity: 0, y: 50, scale: 0.4 },
-  //       { opacity: 1, y: 0, scale: 1, duration: 2, ease: 'power1.out' }
-  //     );
-  //   }
-  //   if (wishBtnRef.current) {
-  //     inputTl.fromTo(
-  //       wishBtnRef.current,
-  //       { opacity: 0, y: 50, scale: 0.4 },
-  //       { opacity: 1, y: 0, scale: 1, duration: 2, ease: 'power1.out' },
-  //       '-=1.5'
-  //     );
-  //   }
   }, []);
 
   useEffect(() => {
@@ -106,6 +90,7 @@ const WishInput = () => {
       }
       setShowWish(true);
       setShowShootingStar(true);
+      setShowButtons(false);
     } catch (error) {
       console.error('소원 저장 중 오류 발생:', error);
       alert('소원을 저장하는 중 오류가 발생했습니다.');
@@ -143,7 +128,9 @@ const WishInput = () => {
               value={wish}
               onChange={(e) => setWish(e.target.value)}
               onKeyDown={(e) => {
-                if (e.key === 'Enter') handleButtonClick();
+                if (e.key === 'Enter' && !e.repeat) {
+                  handleButtonClick();
+                }
               }}
             />
             <div className={styles.wishInputTitle}>

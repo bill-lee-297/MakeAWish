@@ -1,14 +1,12 @@
 import { ref, push, onValue, query, limitToLast, orderByChild } from 'firebase/database';
 import { database } from './config';
 
-// 소원 타입 정의
 export interface Wish {
   id?: string;
   content: string;
   createdAt: string;
 }
 
-// 소원 저장 함수
 export const saveWish = async (content: string): Promise<void> => {
   const wishesRef = ref(database, 'wishes');
   await push(wishesRef, {
@@ -17,7 +15,6 @@ export const saveWish = async (content: string): Promise<void> => {
   });
 };
 
-// 소원 목록 구독 함수
 export const subscribeToWishes = (
   onWishesUpdate: (wishes: Wish[]) => void
 ): () => void => {
@@ -42,8 +39,7 @@ export const subscribeToWishes = (
         });
       });
     }
-    
-    // 생성일 기준으로 정렬
+
     wishes.sort((a, b) => 
       new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
     );
