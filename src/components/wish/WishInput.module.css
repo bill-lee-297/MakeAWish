@@ -1,0 +1,167 @@
+.wishCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.wishInputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.wishTitle {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 8px #222;
+}
+
+.wishInputWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.wishInputTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.wishInput {
+  padding: 0.5rem 0.5rem;
+  border: none;
+  border-bottom: 1px solid white;
+  font-size: 1.5rem;
+  outline: none;
+  width: 280px;
+  text-align: center;
+  background: transparent;
+  color: white;
+  backdrop-filter: blur(2px);
+  margin-bottom: 1rem;
+  caret-color: white;
+}
+
+.wishInput::placeholder {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.wishBtn {
+  display: none;
+  padding: 0.6rem 0.8rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  font-size: 1.2rem;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
+}
+
+.wishBtn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  color: #232946;
+  transform: scale(1.04);
+}
+
+.wishBtn:active {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  transform: scale(0.98);
+}
+
+.wishResultWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wishResult {
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  text-shadow: 0 2px 8px #222;
+  max-width: 500px;
+  word-break: keep-all;
+  line-height: 1.5;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.wishMessage {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 2rem;
+  margin-top: 1rem;
+  text-align: center;
+  text-shadow: 0 2px 8px #222;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.actionButton {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.actionButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.actionButton:active {
+  transform: translateY(0);
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  gap: 8px;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #fff;
+  border: 2px solid gray;
+}
+
+.checkboxLabel {
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  user-select: none;
+}
