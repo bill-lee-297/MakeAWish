@@ -5,6 +5,7 @@ import ShootingStar from '../background/stars/ShootingStar';
 import { IoRefreshSharp } from 'react-icons/io5';
 import { saveWish } from '../../firebase/wishes';
 import WishList from './WishList';
+import classNames from 'classnames';
 
 const WishInput = () => {
   const wishTextRef = useRef<HTMLDivElement>(null);
@@ -20,6 +21,7 @@ const WishInput = () => {
   const [showButtons, setShowButtons] = useState(false);
   const [showWishList, setShowWishList] = useState(false);
   const [isSecret, setIsSecret] = useState(false);
+  const [isTooltipVisible, setIsTooltipVisible] = useState(false);
 
   useEffect(() => {
     if (wishInputRef.current) {
@@ -132,10 +134,14 @@ const WishInput = () => {
                   handleButtonClick();
                 }
               }}
+              onFocus={() => setIsTooltipVisible(true)}
+              onBlur={() => setIsTooltipVisible(false)}
             />
-            <div className={styles.wishInputTitle}>
-              이야.
-            </div>
+            {isTooltipVisible && wish.trim() === '' && (
+              <div className={classNames(styles.customTooltip, styles.visible)}>
+                소원을 입력 후 엔터(Enter)를 눌러주세요!!
+              </div>
+            )}
           </div>
           <div className={styles.checkboxContainer}>
             <input
@@ -148,6 +154,15 @@ const WishInput = () => {
             <label htmlFor="secretWish" className={styles.checkboxLabel}>
               소원을 비밀로 해줘
             </label>
+            <span
+              className={styles.infoIcon}
+              tabIndex={0}
+            >
+              <span className={styles.infoIconInner}>i</span>
+              <span className={styles.customTooltip}>
+                선택할 경우 다른 사람들과 소원이 공유되지 않습니다.
+              </span>
+            </span>
           </div>
         </div>
       )}
