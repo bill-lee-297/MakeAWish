@@ -16,6 +16,12 @@
   z-index: 10;
 }
 
+.wishRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .wishContent {
   color: white;
   font-size: 1.5rem;
@@ -24,4 +30,37 @@
   margin: 0;
   letter-spacing: 0.15em;
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+}
+
+.likeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  transition: transform 0.1s;
+  outline: none;
+}
+
+.likedThumb {
+  color: #4dabff;
+  font-size: 24px;
+  transition: color 0.2s, transform 0.2s, filter 0.2s;
+  transform: scale(1);
+  filter: none;
+  filter: drop-shadow(0 0 6px #4dabff);
+}
+
+.likedThumb:hover {
+  transform: scale(1.2);
+}
+
+.unlikedThumb {
+  color: #fff;
+  font-size: 24px;
+  transition: color 0.2s, transform 0.2s, filter 0.2s;
+  transform: scale(1);
+  filter: none;
 }

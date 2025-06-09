@@ -5,13 +5,15 @@ export interface Wish {
   id?: string;
   content: string;
   createdAt: string;
+  like: boolean;
 }
 
 export const saveWish = async (content: string): Promise<void> => {
   const wishesRef = ref(database, 'wishes');
   await push(wishesRef, {
     content,
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
+    like: false
   });
 };
 
@@ -35,7 +37,8 @@ export const subscribeToWishes = (
         wishes.push({
           id,
           content: wish.content,
-          createdAt: wish.createdAt
+          createdAt: wish.createdAt,
+          like: wish.like
         });
       });
     }

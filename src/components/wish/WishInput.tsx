@@ -4,8 +4,8 @@ import gsap from 'gsap';
 import ShootingStar from '../background/stars/ShootingStar';
 import { IoRefreshSharp } from 'react-icons/io5';
 import { saveWish } from '../../firebase/wishes';
-import WishList from './WishList';
 import classNames from 'classnames';
+import { useWishStore } from '../../store/wishStore';
 
 const WishInput = () => {
   const wishTextRef = useRef<HTMLDivElement>(null);
@@ -19,9 +19,10 @@ const WishInput = () => {
   const [showWish, setShowWish] = useState(false);
   const [showShootingStar, setShowShootingStar] = useState(false);
   const [showButtons, setShowButtons] = useState(false);
-  const [showWishList, setShowWishList] = useState(false);
   const [isSecret, setIsSecret] = useState(false);
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
+
+  const setShowWishList = useWishStore((state) => state.setShowWishList);
 
   useEffect(() => {
     if (wishInputRef.current) {
@@ -175,10 +176,6 @@ const WishInput = () => {
             너의 소원이 이루어질 거야!
           </div>
         </div>
-      )}
-
-      {showWishList && (
-        <WishList showWishList={showWishList} />
       )}
 
       <div ref={buttonsRef} className={styles.actionButtons} style={{ opacity: 0 }}>

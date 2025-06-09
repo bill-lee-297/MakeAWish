@@ -3,6 +3,9 @@ import { type Wish } from '../../firebase/wishes';
 import styles from './WishList.module.css';
 import gsap from 'gsap';
 import { subscribeToWishes } from '../../firebase/wishes';
+import { FaRegThumbsUp, FaThumbsUp } from 'react-icons/fa';
+import { ref, update } from 'firebase/database';
+import { database } from '../../firebase/config';
 
 const WishList = ({ showWishList }: {showWishList: boolean}) => {
   const wishRef = useRef<HTMLDivElement>(null);
@@ -71,17 +74,35 @@ const WishList = ({ showWishList }: {showWishList: boolean}) => {
     };
   }, []);
 
+  const handleLike = async () => {
+    const wish = wishes[currentWishIndex];
+    const wishRef = ref(database, `wishes/${wish.id}`);
+    await update(wishRef, { like: !wish.like });
+  };
+
   if (wishes.length === 0) return null;
 
   return (
     <div className={styles.wishListContainer}>
       <div ref={wishRef} className={styles.wishItem}>
-        <p className={styles.wishContent}>
-          {wishes[currentWishIndex].content}
-        </p>
+        <div className={styles.wishRow}>
+          <p className={styles.wishContent}>
+            {wishes[currentWishIndex].content}
+          </p>
+          <button
+            className={styles.likeButton}
+            onClick={handleLike}
+          >
+            {wishes[currentWishIndex].like ? (
+              <FaThumbsUp className={styles.likedThumb} />
+            ) : (
+              <FaRegThumbsUp className={styles.unlikedThumb} />
+            )}
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-export default WishList; 
+export default WishList;
